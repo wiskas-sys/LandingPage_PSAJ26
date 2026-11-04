@@ -21,7 +21,7 @@ export function Testimonials() {
             key={item.name}
             className="flex flex-col rounded-lg border border-border bg-card p-6 shadow-card"
           >
-            <Quote aria-hidden="true" className="size-5 text-accent" />
+            <Quote aria-hidden="true" className="size-5 text-primary" />
 
             {/* TODO: ganti rating asli bila ada */}
             <div className="mt-4 flex gap-0.5" aria-label="Rating 5 dari 5">
@@ -29,7 +29,7 @@ export function Testimonials() {
                 <Star
                   key={i}
                   aria-hidden="true"
-                  className="size-3.5 fill-accent text-accent"
+                  className="size-3.5 fill-accent text-primary"
                 />
               ))}
             </div>

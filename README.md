@@ -18,7 +18,7 @@ npm run lint     # eslint
 | Route         | Keterangan                                                          |
 | ------------- | ------------------------------------------------------------------- |
 | `/`           | Company profile publik. Tidak butuh login.                           |
-| `/dashboard`  | Placeholder untuk aplikasi internal (inventori, servis, POS).         |
+| `/dashboard`  | Pratinjau dashboard dengan tema dan komponen yang sama dengan PSAJ_26. |
 
 > **Catatan penting.** Repo ini dibuat dari nol, jadi **belum ada** logic
 > Supabase, dashboard/POS, atau middleware auth yang perlu dipindahkan. Route
@@ -34,41 +34,47 @@ npm run lint     # eslint
 
 ## Design System
 
-Semua token ada di `app/globals.css` pada blok `:root` dan `.dark` (nilainya
-sama karena tema ini dark-only). Font dimuat lewat `next/font/google` di
-`app/layout.js`.
+Token dan kelas bersama disalin dari repo `wiskas-sys/PSAJ_26` supaya landing
+page dan dashboard memakai bahasa visual yang sama. Token ada di
+`app/globals.css` pada blok `:root` (light) dan `.dark` (dark, default).
+Tema diatur oleh `next-themes` melalui `components/theme-provider.jsx`.
 
-| Token            | Nilai       | Dipakai untuk                        |
-| ---------------- | ----------- | ------------------------------------ |
-| `--background`   | `#0E1012`   | Latar halaman                        |
-| `--card`         | `#17191C`   | Permukaan kartu                      |
-| `--border`       | `#26292D`   | Garis 1px                            |
-| `--foreground`   | `#EDEEF0`   | Teks utama                           |
-| `--muted-foreground` | `#8D9298` | Teks sekunder                     |
-| `--accent`       | `#9C2B2B`   | CTA dan aksen (penggunaan terbatas)  |
-| `--accent-dark`  | `#6B1E1E`   | Hover CTA                            |
-| `--radius`       | `0.5rem`    | Basis radius kartu                   |
-| `--shadow-card`  | —           | Elevasi halus kartu                  |
+| Token              | Light     | Dark      | Dipakai untuk               |
+| ------------------ | --------- | --------- | --------------------------- |
+| `--background`     | `#F6F7F9` | `#09090B` | Latar halaman               |
+| `--card`           | `#FFFFFF` | `#111113` | Permukaan kartu             |
+| `--border`         | `#DFE3E8` | `#27272A` | Garis 1px                   |
+| `--foreground`     | `#111318` | `#FAFAFA` | Teks utama                  |
+| `--muted-foreground` | `#667085` | `#A1A1AA` | Teks sekunder             |
+| `--primary`        | `#DC2626` | `#DC2626` | CTA, aksen, brand           |
+| `--accent`         | `#FDECEC` | `#241C1C` | Permukaan aksen halus       |
+| `--accent-dark`    | `#B91C1C` | `#B91C1C` | Hover CTA                   |
+| `--radius`         | `0.625rem` | `0.625rem` | Basis radius kartu        |
 
-Utility `.eyebrow` (kelas komponen di `globals.css`) dipakai untuk label
-kecil uppercase berwarna accent dengan garis pendek di sebelah kiri. Utility
-`font-heading` memakai Space Grotesk; sisanya Inter.
+Font dimuat lewat `next/font/google` di `app/layout.js`: Geist untuk teks dan
+judul (`font-heading` juga memetakan ke Geist), Geist Mono untuk label teknis.
+
+Kelas bersama yang bisa dipakai di kedua sisi: `.surface`, `.metric-card`,
+`.table-surface`, `.stock-chip`, `.eyebrow`, `.brand-mark`, `.status-pill`,
+`.terminal-card`, `.page-heading`, `.fx-grid`, dan `.input-with-icon`.
 
 ## Struktur Komponen
 
 ```
 app/
-  layout.js                 font + metadata
+  layout.js                 font + metadata + ThemeProvider
   page.js                   company profile publik
-  dashboard/page.js         placeholder aplikasi internal
-  globals.css               token design system
+  dashboard/page.js         pratinjau dashboard bergaya PSAJ_26
+  globals.css               token design system + kelas bersama
 components/
   ui/                       komponen shadcn/ui (button, card, accordion, badge)
+  theme-provider.jsx        next-themes, default dark
+  theme-toggle.jsx          tombol ganti tema (dipakai header & dashboard)
   landing/
     data.js                 SEMUA data placeholder terkumpul di sini
     Section.jsx             wrapper section + judul + eyebrow
-    Logo.jsx                logo mark "D"
-    Header.jsx              sticky, garis aksen 2px, nav + menu mobile
+    Logo.jsx                brand mark "DM" + wordmark DIAN MOTOR
+    Header.jsx              sticky, nav, tombol dashboard, ganti tema
     Hero.jsx                headline, subheadline, 2 tombol, panel spesifikasi
     StatsBar.jsx            4 angka pencapaian
     About.jsx               2 paragraf bengkel + sistem inventori
@@ -106,8 +112,9 @@ placeholder. Ganti nilainya di `company.mapsEmbed` dan `company.mapsLink`.
 
 ## Catatan Teknis
 
-- Semua komponen aman untuk SSR di App Router. Hanya `Header.jsx` yang memakai
-  `"use client"` karena punya state untuk menu mobile; sisanya server component.
+- Semua komponen aman untuk SSR di App Router. `Header.jsx` memakai
+  `"use client"` karena punya state menu mobile, dan `ThemeToggle.jsx`,
+  `ThemeProvider.jsx`, serta komponen UI interaktif juga client component.
 - Semua section ter-*prerender* sebagai static content.
 - `images.remotePatterns` belum dikonfigurasi karena galeri memakai gambar lokal.
   Tambahkan bila nanti memakai gambar dari CDN.

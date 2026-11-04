@@ -2,7 +2,7 @@ import { cn } from "cn";
 
 /**
  * Wrapper section standar: border-top tipis, container max-w-6xl,
- * dan blok judul dengan eyebrow label (garis pendek + teks uppercase accent).
+ * dan blok judul dengan eyebrow label (teks uppercase mono warna primary).
  *
  * `id` dipakai untuk anchor link navigasi, `scroll-mt` mencegah judul
  * tertutup header yang sticky.

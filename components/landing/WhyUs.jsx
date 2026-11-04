@@ -30,7 +30,7 @@ export function WhyUs() {
               key={item.title}
               className="flex gap-4 rounded-lg border border-border bg-card p-6 shadow-card"
             >
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-md border border-border bg-background text-accent">
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-md border border-border bg-background text-primary">
                 <Icon className="size-4" />
               </span>
 

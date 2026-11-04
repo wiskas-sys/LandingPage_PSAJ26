@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Logo } from "@/components/landing/Logo";
 import { company, navLinks, whatsappLink } from "@/components/landing/data";
 
@@ -32,6 +34,14 @@ export function Footer() {
                   </a>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/dashboard"
+                  className="text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+                >
+                  Dashboard
+                </Link>
+              </li>
               <li>
                 <a
                   href={whatsappLink()}

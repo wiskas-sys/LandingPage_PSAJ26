@@ -35,7 +35,7 @@ export function Services() {
               className="gap-0 rounded-lg border border-border bg-card py-0 shadow-card ring-0 transition-shadow duration-200 hover:shadow-card-hover"
             >
               <CardHeader className="px-5 pt-6">
-                <span className="flex size-9 items-center justify-center rounded-md border border-border bg-background text-accent">
+                <span className="flex size-9 items-center justify-center rounded-md border border-border bg-background text-primary">
                   <Icon className="size-4" />
                 </span>
                 <CardTitle className="mt-4 text-base font-semibold text-foreground">

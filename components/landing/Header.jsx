@@ -1,33 +1,35 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { LayoutDashboard, Menu, X } from "lucide-react";
 import { cn } from "cn";
 
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/landing/Logo";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { navLinks } from "@/components/landing/data";
 
 /**
  * Header sticky: garis aksen 2px di atas, logo + nav,
- * dan tombol CTA. Nav versi mobile memakai panel yang bisa dibuka-tutup.
+ * tombol dashboard, dan pengalih tema yang sama dengan dashboard.
  */
 export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50">
-      <div aria-hidden="true" className="h-0.5 w-full bg-accent" />
+      <div aria-hidden="true" className="h-0.5 w-full bg-primary" />
 
       <div className="border-b border-border bg-background/85 backdrop-blur-md">
-        <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
-          <a href="#atas" className="shrink-0" aria-label="Dian Motor, ke atas">
+        <div className="mx-auto flex h-[76px] w-full max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
+          <a href="#atas" className="shrink-0" aria-label="DIAN MOTOR, ke atas">
             <Logo />
           </a>
 
           <nav
             aria-label="Navigasi utama"
-            className="hidden items-center gap-8 md:flex"
+            className="hidden items-center gap-7 lg:flex"
           >
             {navLinks.map((link) => (
               <a
@@ -41,8 +43,20 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
-            {/* TODO: ganti label CTA sesuai kebutuhan */}
-            <Button asChild className="hidden h-9 px-4 md:inline-flex">
+            <ThemeToggle className="size-9 rounded-lg" />
+
+            <Button
+              asChild
+              variant="outline"
+              className="hidden h-9 px-4 sm:inline-flex"
+            >
+              <Link href="/dashboard">
+                <LayoutDashboard data-icon="inline-start" />
+                Dashboard
+              </Link>
+            </Button>
+
+            <Button asChild className="hidden h-9 px-4 sm:inline-flex">
               <a href="#kontak">Hubungi Kami</a>
             </Button>
 
@@ -52,7 +66,7 @@ export function Header() {
               aria-expanded={open}
               aria-controls="menu-mobile"
               aria-label={open ? "Tutup menu" : "Buka menu"}
-              className="inline-flex size-9 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:bg-muted md:hidden"
+              className="inline-flex size-9 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:bg-muted lg:hidden"
             >
               {open ? <X className="size-4" /> : <Menu className="size-4" />}
             </button>
@@ -63,7 +77,7 @@ export function Header() {
       {open ? (
         <div
           id="menu-mobile"
-          className="border-b border-border bg-background md:hidden"
+          className="border-b border-border bg-background lg:hidden"
         >
           <nav
             aria-label="Navigasi mobile"
@@ -82,7 +96,13 @@ export function Header() {
                 {link.label}
               </a>
             ))}
-            <Button asChild className="mt-4 mb-2 h-10 w-full">
+            <Button asChild variant="outline" className="mt-4 h-10 w-full">
+              <Link href="/dashboard" onClick={() => setOpen(false)}>
+                <LayoutDashboard data-icon="inline-start" />
+                Masuk Dashboard
+              </Link>
+            </Button>
+            <Button asChild className="mt-2 mb-2 h-10 w-full">
               <a href="#kontak" onClick={() => setOpen(false)}>
                 Hubungi Kami
               </a>

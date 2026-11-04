@@ -9,11 +9,11 @@ import { heroCopy, heroSpecs } from "@/components/landing/data";
  */
 export function Hero() {
   return (
-    <section id="atas" className="scroll-mt-20 overflow-hidden">
+    <section id="atas" className="relative scroll-mt-20 overflow-hidden">
       {/* glow accent tipis di belakang headline */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(60%_100%_at_50%_0%,var(--accent)_0%,transparent_70%)] opacity-[0.07]"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(60%_100%_at_50%_0%,var(--primary)_0%,transparent_70%)] opacity-[0.07]"
       />
 
       <div className="mx-auto grid w-full max-w-6xl gap-14 px-5 pt-20 pb-24 sm:px-8 sm:pt-28 sm:pb-32 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-16">
@@ -49,7 +49,7 @@ export function Hero() {
 
           {/* TODO: ganti catatan singkat di bawah tombol */}
           <p className="mt-6 flex items-center gap-2 text-sm text-muted-foreground">
-            <MessageCircle className="size-4 text-accent" />
+            <MessageCircle className="size-4 text-primary" />
             Tanpa booking wajib, motor bisa langsung dibawa ke workshop.
           </p>
         </div>

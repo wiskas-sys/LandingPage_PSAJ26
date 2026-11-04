@@ -23,7 +23,7 @@ export function ProcessSteps() {
               />
             ) : null}
 
-            <span className="relative flex size-9 items-center justify-center rounded-md border border-accent bg-background font-heading text-sm font-bold text-accent">
+            <span className="relative flex size-9 items-center justify-center rounded-md border border-primary bg-background font-heading text-sm font-bold text-primary">
               {/* TODO: nomor langkah, urutan sudah benar */}
               {index + 1}
             </span>

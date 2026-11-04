@@ -22,7 +22,7 @@ export function Contact() {
         <div className="rounded-lg border border-border bg-card p-6 shadow-card sm:p-7">
           <ul className="space-y-6">
             <li className="flex gap-4">
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-md border border-border bg-background text-accent">
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-md border border-border bg-background text-primary">
                 <MapPin className="size-4" />
               </span>
               <div>
@@ -35,7 +35,7 @@ export function Contact() {
                   href={company.mapsLink}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="mt-2 inline-block text-sm text-accent underline-offset-4 hover:underline"
+                  className="mt-2 inline-block text-sm text-primary underline-offset-4 hover:underline"
                 >
                   {/* TODO: ganti label tautan peta */}
                   Lihat di Google Maps
@@ -44,7 +44,7 @@ export function Contact() {
             </li>
 
             <li className="flex gap-4">
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-md border border-border bg-background text-accent">
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-md border border-border bg-background text-primary">
                 <Phone className="size-4" />
               </span>
               <div>
@@ -60,7 +60,7 @@ export function Contact() {
             </li>
 
             <li className="flex gap-4">
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-md border border-border bg-background text-accent">
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-md border border-border bg-background text-primary">
                 <Mail className="size-4" />
               </span>
               <div>
@@ -76,7 +76,7 @@ export function Contact() {
             </li>
 
             <li className="flex gap-4">
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-md border border-border bg-background text-accent">
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-md border border-border bg-background text-primary">
                 <Clock className="size-4" />
               </span>
               <div className="flex-1">

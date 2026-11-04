@@ -50,7 +50,7 @@ export function About() {
           <ul className="mt-6 space-y-4">
             {highlights.map((item) => (
               <li key={item.label} className="flex items-start gap-3">
-                <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-md border border-border bg-background text-accent">
+                <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-md border border-border bg-background text-primary">
                   <item.icon className="size-4" />
                 </span>
                 <span className="pt-1.5 text-sm font-medium text-foreground">
